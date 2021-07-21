@@ -11,16 +11,21 @@ Take a look below diagram:
 |   |   |- response-handler.js (cache error and handle response)
 |   |   |- router.js (routing loader)
 |   |- configs (configurations)
-|   |- components (components)
+|   |- resources (components)
 |   |   |- user (user component - example)
-|   |   |   |- endpoint.js (routing file)
-|   |   |   |- controller.js (handle request & response)
 |   |   |   |- service.js (user service)
 |   |   |   |- model.js (interact to db)
 |   |   |   |- schema-mg.js (define mongoose schema)
 |   |   |- ...
-|   |- channels (chatting channel handler)
-|   |   |- facebook (facebook channel)
+|   |- routes (components)
+|   |   |- user (user component - example)
+|   |   |   |- endpoint.js (routing file)
+|   |   |   |- controller.js (handle request & response)
+|   |   |   |- schema-api.js (define schema api, using for validation request parameters)
+|   |   |- ...
+|   |- libs (helper libs)
+|   |   |- debug.js (debugger)
+|   |   |- ...
 ```
 
 **Main workflow:**

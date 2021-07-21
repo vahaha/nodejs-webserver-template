@@ -1,6 +1,5 @@
-# Omni Channel
-Provide method to chat on multi channels
-
+# NodeJs Web Server Template
+Provide skeleton for APIs server using KoaJS
 ## Installation
 ### install packages
 ```
