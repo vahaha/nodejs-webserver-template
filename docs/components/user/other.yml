@@ -1,0 +1,184 @@
+ChangePassword:
+  put:
+    tags:
+      - user
+    summary: Change user password
+    description: ''
+    security:
+      - api_key: []
+    consumes:
+      - application/json
+    produces:
+      - application/json
+    parameters:
+      - in: path
+        name: id
+        description: user id
+      - in: body
+        name: body
+        description: updated fields
+        required: true
+        schema:
+          type: object
+          properties:
+            oldPassword:
+              type: string
+              description: old password, it be used for verify user
+            newPassword:
+              type: string
+              description: new password, if null then default password will be used
+              min: 6
+    responses:
+      '200':
+        description: successful operation
+        schema:
+          type: object
+          properties:
+            data:
+              type: string
+              example: 'success'
+      '401':
+        $ref: '../../assets/response-error.yml#/401'
+      '403':
+        $ref: '../../assets/response-error.yml#/403'
+      '404':
+        $ref: '../../assets/response-error.yml#/404'
+      '412':
+        $ref: '../../assets/response-error.yml#/412'
+      '500':
+        $ref: '../../assets/response-error.yml#/500'
+ResetPassword:
+  put:
+    tags:
+      - user
+    summary: Reset user password. This function only be used by admin.
+    description: ''
+    security:
+      - api_key: []
+    consumes:
+      - application/json
+    produces:
+      - application/json
+    parameters:
+      - in: path
+        name: id
+        description: user id
+      - in: body
+        name: body
+        description: updated fields
+        required: true
+        schema:
+          type: object
+          properties:
+            newPassword:
+              type: string
+              description: new password, if null then default password will be used
+              min: 6
+    responses:
+      '200':
+        description: successful operation
+        schema:
+          type: object
+          properties:
+            data:
+              type: string
+              example: 'success'
+      '401':
+        $ref: '../../assets/response-error.yml#/401'
+      '403':
+        $ref: '../../assets/response-error.yml#/403'
+      '404':
+        $ref: '../../assets/response-error.yml#/404'
+      '412':
+        $ref: '../../assets/response-error.yml#/412'
+      '500':
+        $ref: '../../assets/response-error.yml#/500'
+Profile:
+  get:
+    tags:
+      - user
+    summary: Get profile of current user
+    description: ''
+    security:
+      - api_key: []
+    consumes:
+      - application/json
+    responses:
+      '200':
+        description: successful operation
+        schema:
+          type: object
+          properties:
+            data:
+              type: string
+              example: 'success'
+      '401':
+        $ref: '../../assets/response-error.yml#/401'
+      '403':
+        $ref: '../../assets/response-error.yml#/403'
+      '404':
+        $ref: '../../assets/response-error.yml#/404'
+      '412':
+        $ref: '../../assets/response-error.yml#/412'
+      '500':
+        $ref: '../../assets/response-error.yml#/500'
+AccessToken:
+  get:
+    tags:
+      - user
+    summary: Get access token of current user
+    description: ''
+    security:
+      - api_key: []
+    consumes:
+      - application/json
+    responses:
+      '200':
+        description: successful operation
+        schema:
+          type: object
+          properties:
+            data:
+              type: string
+              example: 'ed3dc3cb827002c706b6963a6d4044aacf1b8d0954c0f5ec0828793480a01faf'
+              description: access token
+      '401':
+        $ref: '../../assets/response-error.yml#/401'
+      '403':
+        $ref: '../../assets/response-error.yml#/403'
+      '404':
+        $ref: '../../assets/response-error.yml#/404'
+      '412':
+        $ref: '../../assets/response-error.yml#/412'
+      '500':
+        $ref: '../../assets/response-error.yml#/500'
+  put:
+    tags:
+      - user
+    summary: Reset access token of current user
+    description: ''
+    security:
+      - api_key: []
+    consumes:
+      - application/json
+    responses:
+      '200':
+        description: successful operation
+        schema:
+          type: object
+          properties:
+            data:
+              type: string
+              example: 'ed3dc3cb827002c706b6963a6d4044aacf1b8d0954c0f5ec0828793480a01faf'
+              description: access token
+      '401':
+        $ref: '../../assets/response-error.yml#/401'
+      '403':
+        $ref: '../../assets/response-error.yml#/403'
+      '404':
+        $ref: '../../assets/response-error.yml#/404'
+      '412':
+        $ref: '../../assets/response-error.yml#/412'
+      '500':
+        $ref: '../../assets/response-error.yml#/500'
+

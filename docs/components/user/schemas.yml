@@ -1,0 +1,95 @@
+Model:
+  type: object
+  properties:
+    _id:
+      type: string
+      description: user id
+    email:
+      type: string
+      description: email of user
+      format: email
+    name:
+      type: string
+      description: full name of user 
+    status:
+      type: string
+      enum:
+        - active
+        - deactive
+        - deleted
+    role:
+      type: string
+      enum:
+        - user
+        - partner
+        - admin
+    createdAt:
+      type: string
+      format: date-time
+    updatedAt:
+      type: string
+      format: date-time
+
+Form:
+  type: object
+  properties:
+    email:
+      type: string
+      description: email of user
+      format: email
+    password:
+      type: string
+      description: password of user
+      min: 6
+    name:
+      type: string
+      description: full name of user 
+    status:
+      type: string
+      enum:
+        - active
+        - deactive
+        - deleted
+    role:
+      type: string
+      enum:
+        - user
+        - partner
+        - admin
+
+_id:
+  type: string
+  description: user id
+email:
+  type: string
+  description: email of user
+  format: email
+password:
+  type: string
+  description: password of user
+  min: 6
+name:
+  type: string
+  description: full name of user 
+status:
+  type: string
+  enum:
+    - active
+    - deactive
+    - deleted
+role:
+  type: string
+  enum:
+    - user
+    - partner
+    - admin
+intro:
+  type: string
+phoneNumber:
+  type: string
+createdAt:
+  type: string
+  format: date-time
+updatedAt:
+  type: string
+  format: date-time

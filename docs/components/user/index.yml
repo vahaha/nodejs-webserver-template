@@ -1,0 +1,98 @@
+get:
+  tags:
+    - user
+  summary: List users
+  description: ''
+  security:
+    - api_key: []
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - in: query
+      name: skipPage
+      description: skip page
+    - in: query
+      name: limit
+      description: limit response items
+    - in: query
+      name: status
+      description: filter by user status
+  responses:
+    '200':
+      description: successful operation
+      schema:
+        type: object
+        properties:
+          data:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: './schemas.yml#/Model'
+              paging:
+                $ref: '../../assets/paging.yml'
+    '401':
+      $ref: '../../assets/response-error.yml#/401'
+    '403':
+      $ref: '../../assets/response-error.yml#/403'
+    '404':
+      $ref: '../../assets/response-error.yml#/404'
+    '412':
+      $ref: '../../assets/response-error.yml#/412'
+    '500':
+      $ref: '../../assets/response-error.yml#/500'
+post:
+  tags:
+    - user
+  summary: Create a user
+  description: ''
+  security:
+    - api_key: []
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - in: body
+      name: body
+      description: user object
+      required: true
+      schema:
+        type: object
+        required:
+          - email
+          - password
+        properties:
+          email:
+            $ref: './schemas.yml#/email'
+          password:
+            $ref: './schemas.yml#/password'
+          role:
+            $ref: './schemas.yml#/role'
+          name:
+            $ref: './schemas.yml#/name'
+          phoneNumber:
+            $ref: './schemas.yml#/phoneNumber'
+          intro:
+            $ref: './schemas.yml#/intro'
+  responses:
+    '200':
+      description: successful operation
+      schema:
+        type: object
+        properties:
+          data:
+            $ref: './schemas.yml#/Model'
+    '401':
+      $ref: '../../assets/response-error.yml#/401'
+    '403':
+      $ref: '../../assets/response-error.yml#/403'
+    '404':
+      $ref: '../../assets/response-error.yml#/404'
+    '412':
+      $ref: '../../assets/response-error.yml#/412'
+    '500':
+      $ref: '../../assets/response-error.yml#/500'

@@ -1,0 +1,57 @@
+swagger: '3.0.2'
+info:
+  description: 'This is a sample web server. For this sample, you can use the api key to test the authorization.'
+  version: 1.0.0
+  title: NodeJS Web Server Template
+  contact:
+    website: https://
+schemes:
+  $ref: ./env.yml#/schemes
+host:
+  $ref: ./env.yml#/host
+basePath:
+  $ref: ./env.yml#/basePath
+tags:
+  - name: authentication
+    description: Access to admin dashboard
+  - name: user
+    description: Operations about user
+  - name: channel
+    description: Configuration channels
+  - name: message
+    description: Operations about send & get message
+  - name: guest
+    description: Operations about guest
+  - name: conversation
+    description: Operations about conversation
+paths:
+  /admin/users:
+    $ref: './components/user/index.yml'
+  /admin/users/{id}:
+    $ref: './components/user/id.yml'
+  /admin/users/{id}/password:
+    $ref: './components/user/other.yml#/ResetPassword'
+  /admin/profile:
+    $ref: './components/user/other.yml#/Profile'
+  /admin/profile/access-token:
+    $ref: './components/user/other.yml#/AccessToken'
+  /admin/profile/password:
+    $ref: './components/user/other.yml#/ChangePassword'
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: authorization
+    in: header
+  # bearerAuth:
+  #   type: http
+  #   scheme: bearer
+  #   bearerFormat: JWT  
+# components:
+#   securitySchemes:
+#     bearerAuth:
+#       type: http
+#       scheme: bearer
+#       bearerFormat: JWT  # optional, for documentation purposes only
+# externalDocs:
+#   description: Find out more about Swagger
+#   url: 'http://swagger.io'

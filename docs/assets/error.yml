@@ -1,0 +1,99 @@
+Error:
+  type: object
+  properties:
+    error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+          example: AuthenticationError
+Error401:
+  type: object
+  properties:
+    error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Invalid token
+        code:
+          type: integer
+          format: int32
+          example: 401
+        type:
+          type: string
+          example: AuthenticationError
+Error403:
+  type: object
+  properties:
+    error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: You do not have permission to access this resource
+        code:
+          type: integer
+          format: int32
+          example: 403
+        type:
+          type: string
+          example: PermissionError
+Error404:
+  type: object
+  properties:
+    error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Not found resource by id 123
+        code:
+          type: integer
+          format: int32
+          example: 404
+        type:
+          type: string
+          example: NotFoundError
+Error412:
+  type: object
+  properties:
+    error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: createdAt must to be datetime type
+        code:
+          type: integer
+          format: int32
+          example: 412
+        type:
+          type: string
+          example: ValidationError
+        details:
+          anyOf: 
+            - type: string
+            - type: object
+            - type: array
+Error500:
+  type: object
+  properties:
+    error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: occurs error in server
+        code:
+          type: integer
+          format: int32
+          example: 500
+        type:
+          type: string
+          example: AuthenticationError

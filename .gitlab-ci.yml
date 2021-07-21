@@ -1,0 +1,61 @@
+# Config cache
+cache:
+  paths:
+    - node_modules/
+deploy_development:
+  tags:
+    - staging
+  variables:
+    ENV_DIR: '$PROJECT_DIR/development'
+  script:
+    - mkdir -p $ENV_DIR
+    - rm -rf $ENV_DIR/src
+    - cp -r src $ENV_DIR
+    - cp -r -u * $ENV_DIR
+    - cd $ENV_DIR
+    - cp ../conf/development.env ./env/development.env
+    - cp ../conf/development.process.yml ./process.yml
+    - npm install --production
+    - yarn generate-docs
+    - pm2 delete process.yml
+    - pm2 start process.yml
+  only:
+    - develop
+deploy_staging:
+  tags:
+    - staging
+  variables:
+    ENV_DIR: '$PROJECT_DIR/staging'
+  script:
+    - mkdir -p $ENV_DIR
+    - rm -rf $ENV_DIR/src
+    - cp -r src $ENV_DIR
+    - cp -r -u * $ENV_DIR
+    - cd $ENV_DIR
+    - cp ../conf/staging.env ./env/staging.env
+    - cp ../conf/staging.process.yml ./process.yml
+    - yarn
+    - yarn generate-docs
+    - pm2 delete process.yml
+    - pm2 start process.yml
+  only:
+    - staging
+deploy_beta:
+  tags:
+    - staging
+  variables:
+    ENV_DIR: '$PROJECT_DIR/beta'
+  script:
+    - mkdir -p $ENV_DIR
+    - rm -rf $ENV_DIR/src
+    - cp -r src $ENV_DIR
+    - cp -r -u * $ENV_DIR
+    - cd $ENV_DIR
+    - cp ../conf/beta.env ./env/beta.env
+    - cp ../conf/beta.process.yml ./process.yml
+    - yarn
+    - yarn generate-docs
+    - pm2 delete process.yml
+    - pm2 start process.yml
+  only:
+    - beta

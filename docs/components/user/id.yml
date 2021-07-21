@@ -1,0 +1,117 @@
+get:
+  tags:
+    - user
+  summary: Get details of a user
+  description: ''
+  security:
+    - api_key: []
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - in: path
+      name: id
+      description: user id
+  responses:
+    '200':
+      description: successful operation
+      schema:
+        type: object
+        properties:
+          data:
+            $ref: './schemas.yml#/Model'
+    '401':
+      $ref: '../../assets/response-error.yml#/401'
+    '403':
+      $ref: '../../assets/response-error.yml#/403'
+    '404':
+      $ref: '../../assets/response-error.yml#/404'
+    '412':
+      $ref: '../../assets/response-error.yml#/412'
+    '500':
+      $ref: '../../assets/response-error.yml#/500'
+put:
+  tags:
+    - user
+  summary: Update user by id
+  description: ''
+  security:
+    - api_key: []
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - in: path
+      name: id
+      description: user id
+    - in: body
+      name: body
+      description: List of user object
+      required: true
+      schema:
+        type: object
+        properties:
+          name:
+            $ref: './schemas.yml#/name'
+          role:
+            $ref: './schemas.yml#/role'
+          phoneNumber:
+            $ref: './schemas.yml#/phoneNumber'
+          intro:
+            $ref: './schemas.yml#/intro'
+          status:
+            $ref: './schemas.yml#/status'
+  responses:
+    '200':
+      description: successful operation
+      schema:
+        type: object
+        properties:
+          data:
+            $ref: './schemas.yml#/Model'
+    '401':
+      $ref: '../../assets/response-error.yml#/401'
+    '403':
+      $ref: '../../assets/response-error.yml#/403'
+    '404':
+      $ref: '../../assets/response-error.yml#/404'
+    '412':
+      $ref: '../../assets/response-error.yml#/412'
+    '500':
+      $ref: '../../assets/response-error.yml#/500'
+delete:
+  tags:
+    - user
+  summary: Delate a user by id
+  description: ''
+  security:
+    - api_key: []
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - in: path
+      name: id
+      description: user id
+  responses:
+    '200':
+      description: successful operation
+      schema:
+        type: object
+        properties:
+          data:
+            type: string
+            default: 'success'
+    '401':
+      $ref: '../../assets/response-error.yml#/401'
+    '403':
+      $ref: '../../assets/response-error.yml#/403'
+    '404':
+      $ref: '../../assets/response-error.yml#/404'
+    '412':
+      $ref: '../../assets/response-error.yml#/412'
+    '500':
+      $ref: '../../assets/response-error.yml#/500'
