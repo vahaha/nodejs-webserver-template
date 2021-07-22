@@ -22,8 +22,32 @@ const getNewConnection = () => {
         password: env.REDIS_PASSWORD,
     }
 
+    const nodes = [node]
+    if (env.REDIS_NODE_1_HOST && env.REDIS_NODE_1_PORT) {
+        nodes.push({
+            host: env.REDIS_NODE_1_HOST,
+            port: env.REDIS_NODE_1_PORT,
+        })
+    }
+    if (env.REDIS_NODE_2_HOST && env.REDIS_NODE_2_PORT) {
+        nodes.push({
+            host: env.REDIS_NODE_2_HOST,
+            port: env.REDIS_NODE_2_PORT,
+        })
+    }
+
     if (env.REDIS_MODE === 'cluster') {
-        return new Redis.Cluster([node], { redisOptions: options })
+        return new Redis.Cluster(nodes, { redisOptions: options })
+    }
+
+    if (env.REDIS_MODE === 'sentinel') {
+        return new Redis({
+            sentinels: [node],
+            name: env.REDIS_SENTINEL_NAME,
+            sentinelPassword: env.REDIS_SENTINEL_PASSWORD,
+            password: env.REDIS_PASSWORD,
+            db: env.REDIS_DB,
+        })
     }
 
     // default
