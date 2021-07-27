@@ -14,7 +14,7 @@
     "nodemon:dev": "NODE_ENV=development nodemon src/index.js",
     "nodemon:staging": "NODE_ENV=staging nodemon src/index.js",
     "nodemon:start": "NODE_ENV=production nodemon src/index.js",
-    "generate-docs": "swagger-cli bundle docs/swagger.yml --outfile docs/_build/swagger.json --type json"
+    "generate-docs": "swagger-cli bundle docs/index.yml --outfile docs/_build/index.json --type json"
   },
   "dependencies": {
     "@hapi/joi-date": "^2.0.1",
