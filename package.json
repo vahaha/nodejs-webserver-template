@@ -44,7 +44,6 @@
     "mongodb": "^3.6.5",
     "mongoose": "^5.12.2",
     "ms": "^2.1.3",
-    "my-debug": "file:./src/libs/debug.js",
     "mysql2": "^2.2.5",
     "node-cache": "^5.1.2",
     "qs": "^6.10.1",
